@@ -14,6 +14,7 @@ DELETE http://localhost:8080/employees/1
 
 - add new employee
 POST http://localhost:8080/employees/4
+also set http header `Content-Type` as `application/json`
 ```
 {
     "employeeId": 4,
@@ -23,6 +24,7 @@ POST http://localhost:8080/employees/4
 
 - update employee
 PUT http://localhost:8080/employees/4
+also set http header `Content-Type` as `application/json`
 ```
 {
     "employeeId": 4,
