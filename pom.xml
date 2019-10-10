@@ -24,6 +24,11 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<scm>
+		<developerConnection>scm:git:git@github.com:vishalsinha21/spring-boot-rest-crud.git</developerConnection>
+	</scm>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,6 +52,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<releaseProfiles>releases</releaseProfiles>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
