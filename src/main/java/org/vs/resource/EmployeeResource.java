@@ -13,9 +13,12 @@ import org.vs.domain.ErrorView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @RestController
 public class EmployeeResource {
+
+    Logger logger = Logger.getLogger(EmployeeResource.class.getName());
 
     public static Map<Integer, EmployeeView> employees;
 
@@ -33,6 +36,7 @@ public class EmployeeResource {
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public ResponseEntity getAllEmployees() {
+        logger.info("returning all employees");
         return ResponseEntity.ok(new ArrayList<>(employees.values()));
     }
 
