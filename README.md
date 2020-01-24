@@ -59,14 +59,18 @@ Steps to run spring boot application inside docker container
 
 This basically means, that firstly you are creating a image using openjdk 8 image, copying you spring boot app jar to root with name `spring-boot-rest-crud.jar`, exposing the port 8080 and then specifying endpoint to start your spring boot jar (its a fat jar with embedded tomcat)    
 
+
+```
 FROM openjdk:8
 ADD /target/spring-boot-rest-crud-0.0.1-SNAPSHOT.jar spring-boot-rest-crud.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "spring-boot-rest-crud.jar"]
-
+```
 
 * Build image using below command
 
+
+```
 ~/Documents/practice_workspace/spring-boot-rest-crud(git::master):➔ docker build -f Dockerfile -t spring-boot-rest .
 Sending build context to Docker daemon  15.35MB
 Step 1/4 : FROM openjdk:8
@@ -93,20 +97,25 @@ Removing intermediate container 912fa5c31e60
  ---> d696d6b72a05
 Successfully built d696d6b72a05
 Successfully tagged spring-boot-rest:latest
+```
 
 
 * Check generated docker image using below command:
 
+
+```
 ~/Documents/practice_workspace/spring-boot-rest-crud(git::master):➔ docker images
 REPOSITORY        TAG                 IMAGE ID              CREATED               SIZE
 spring-boot-rest     latest              d696d6b72a05      58 seconds ago     503MB
 openjdk                  8                     8c6851b1fc09       32 hours ago          488MB
 busybox                 latest              19485c79a9bb       4 months ago        1.22MB
-
+```
 
 
 * Run docker container using below command, this should start spring boot app
 
+
+```
 ~/Documents/practice_workspace/spring-boot-rest-crud(git::master):➔ docker run -p 8080:8080 spring-boot-rest
 
   .   ____          _            __ _ _
@@ -128,12 +137,16 @@ busybox                 latest              19485c79a9bb       4 months ago     
 2020-01-24 08:47:31.308  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2020-01-24 08:47:31.309  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2020-01-24 08:47:31.326  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
-
+```
 
 
 * Access your application by calling any of the endpoint, example: http://localhost:8080/employees
 
 * You can also check logs from application to validate
 
+
+```
 2020-01-24 08:47:31.350  INFO 1 --- [nio-8080-exec-1] org.vs.resource.EmployeeResource         : returning all employees
 2020-01-24 08:47:32.106  INFO 1 --- [nio-8080-exec-2] org.vs.resource.EmployeeResource         : returning all employees
+```
+
