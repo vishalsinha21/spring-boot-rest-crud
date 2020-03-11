@@ -27,6 +27,8 @@ public class EmployeeResource {
         EmployeeView emp1 = new EmployeeView(1, "Vishal");
         EmployeeView emp2 = new EmployeeView(2, "Rajat");
         EmployeeView emp3 = new EmployeeView(3, "Nishant");
+        EmployeeView emp4 = new EmployeeView(4, "Prashant");
+        EmployeeView emp5 = new EmployeeView(5, "Abhishek");
 
         employees = new HashMap<>();
         employees.put(1, emp1);
