@@ -20,7 +20,7 @@ jobs:
       run: git fetch origin master:master
     - name: get diff
       run: |
-        git_diff=$(git diff master | grep +)
+        git_diff=$(git diff master | grep "^+")
         echo $git_diff
         git_diff="${git_diff//'%'/'%25'}"
         git_diff="${git_diff//$'\n'/'%0A'}"
