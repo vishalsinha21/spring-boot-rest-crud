@@ -22,5 +22,5 @@ jobs:
       run: echo "::set-output name=git_diff::$(git diff master | grep +)"
       id: get_diff
     - name: check output
-      run: echo $(steps.get_diff.outputs.git_diff)
+      run: echo ${{ steps.get_diff.outputs.git_diff }}
 
