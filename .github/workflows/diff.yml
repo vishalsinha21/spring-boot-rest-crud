@@ -18,5 +18,8 @@ jobs:
         ref: ${{ github.head_ref }}
     - name: Fetch master
       run: git fetch origin master:master
-    - name: Get diff with master
-      run: git diff master | grep +
+    - name: get diff
+      run: echo "::set-output name=git_diff::$(git diff master | grep +)"
+    - name: check output
+      run: echo $(steps.get_diff.outputs.git_diff)
+
