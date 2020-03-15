@@ -20,6 +20,7 @@ jobs:
       run: git fetch origin master:master
     - name: get diff
       run: echo "::set-output name=git_diff::$(git diff master | grep +)"
+      id: get_diff
     - name: check output
       run: echo $(steps.get_diff.outputs.git_diff)
 
