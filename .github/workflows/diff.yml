@@ -28,11 +28,13 @@ jobs:
         cat diff.txt
       id: get_diff
 
-    - name: create checklist
+    - name: setup node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: node checklistUtil.js
+
+    - name: create checklist
+      run: node checklistUtil.js
 
 #    - name: create checklist
 #      run: ./checklist.sh
