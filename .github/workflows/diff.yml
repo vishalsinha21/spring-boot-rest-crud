@@ -26,7 +26,7 @@ jobs:
     - name: create checklist
       uses: satackey/action-js-inline@v0.0.3
       id: createchecklist
-        with:
+      with:
         required-packages: fs, path
         script: |
           function getFinalChecklist(diff) {
