@@ -36,6 +36,9 @@ function getFormattedChecklist(checklist) {
   return formattedChecklist;
 }
 
+const mapping = require('./mapping.json');
+console.log(mapping)
+
 const fs = require('fs')
 var path = require('path');
 var filePath = path.join(__dirname, '..', '..', 'diff.txt');
