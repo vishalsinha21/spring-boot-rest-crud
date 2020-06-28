@@ -26,7 +26,7 @@ jobs:
 
 
     - name: create checklist
-      run: sh checklist.sh
+      run: ./checklist.sh
 
     - uses: actions/github-script@v2
       with:
