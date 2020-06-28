@@ -39,7 +39,7 @@ jobs:
       id: create_checklist
 
     - name: check output
-      run: echo ${{ steps.create_checklist.outputs.create_checklist }}
+      run: echo steps.create_checklist.outputs.create_checklist
 
     - uses: actions/github-script@v2
       with:
@@ -48,5 +48,5 @@ jobs:
             issue_number: 1,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: ${{ steps.create_checklist.outputs.create_checklist }}
+            body: steps.create_checklist.outputs.create_checklist
           })
