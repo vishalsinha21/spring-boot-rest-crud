@@ -23,6 +23,17 @@ jobs:
         git diff master | grep "^+" >> diff.txt
         cat diff.txt
       id: get_diff
+
+    - uses: actions/github-script@v2
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
+
     - name: create checklist
       uses: satackey/action-js-inline@v0.0.2
       id: createchecklist
