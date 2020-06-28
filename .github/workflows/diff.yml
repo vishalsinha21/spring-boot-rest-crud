@@ -24,7 +24,7 @@ jobs:
         cat diff.txt
       id: get_diff
     - name: create checklist
-      uses: satackey/action-js-inline@v0.0.3
+      uses: satackey/action-js-inline@v0.0.2
       id: createchecklist
       with:
         required-packages: fs, path
