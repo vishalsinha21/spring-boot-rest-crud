@@ -36,6 +36,9 @@ jobs:
         node checklistUtil.js
         create_checklist="$(cat checklist.md)"
         create_checklist="${create_checklist//$'\n'/'%0A'}"
+        create_checklist="${create_checklist//$'-'/'%2D'}"
+        create_checklist="${create_checklist//$'['/'%5B'}"
+        create_checklist="${create_checklist//$']'/'%5D'}"
         echo "::set-output name=create_checklist::$create_checklist"
       id: create_checklist
 
@@ -51,8 +54,5 @@ jobs:
             issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: |
-            ```
-            ${{ steps.create_checklist.outputs.create_checklist }}
-            ```
+            body: ${{ steps.create_checklist.outputs.create_checklist }}
           })
