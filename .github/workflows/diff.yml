@@ -41,12 +41,12 @@ jobs:
     - name: check output
       run: echo ${{ steps.create_checklist.outputs.create_checklist }}
 
-#    - uses: actions/github-script@v2
-#      with:
-#        script: |
-#          github.issues.createComment({
-#            issue_number: context.pull_request.number,
-#            owner: context.repo.owner,
-#            repo: context.repo.repo,
-#            body: '👋 Thanks for reporting!'
-#          })
+    - uses: actions/github-script@v2
+      with:
+        script: |
+          github.issues.createComment({
+            issue_number: 1,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '👋 Thanks for reporting!'
+          })
