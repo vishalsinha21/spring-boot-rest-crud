@@ -24,7 +24,7 @@ function getChecklist(diff, mappings) {
 function getFormattedChecklist(checklist) {
   let formattedChecklist = '';
   if (checklist.length > 0) {
-    formattedChecklist = 'Checklist'
+    formattedChecklist = '**Checklist:**'
 
     for (let i = 0; i < checklist.length; i++) {
       formattedChecklist += '\n';
