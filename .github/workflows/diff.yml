@@ -34,12 +34,6 @@ jobs:
     - name: create checklist
       run: |
         node checklistUtil.js
-        create_checklist="$(cat checklist.md)"
-        echo ::set-output name=create_checklist::$create_checklist
-      id: create_checklist
-
-    - name: check output
-      run: echo ${{ steps.create_checklist.outputs.create_checklist }}
 
     - uses: actions/github-script@v2
       with:
