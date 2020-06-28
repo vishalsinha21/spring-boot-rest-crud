@@ -34,14 +34,8 @@ jobs:
     - name: create checklist
       run: |
         node checklistUtil.js
-        create_checklist=$(cat checklist.md)
-        create_checklist="${create_checklist//$'\n'/'%0A'}"
-        create_checklist="${create_checklist//$'-'/'%2D'}"
-        create_checklist="${create_checklist//$'['/'%5B'}"
-        create_checklist="${create_checklist//$']'/'%5D'}"
-        create_checklist="${create_checklist//$'*'/'%2A'}"
-        create_checklist="${create_checklist//$':'/'%3A'}"
-        echo "::set-output name=create_checklist::$create_checklist"
+        create_checklist="$(cat checklist.md)"
+        echo ::set-output name=create_checklist::$create_checklist
       id: create_checklist
 
     - name: check output
@@ -50,8 +44,6 @@ jobs:
     - uses: actions/github-script@v2
       with:
         script: |
-          create_checklist="$(cat checklist.md)"
-          echo "$create_checklist"
           github.issues.createComment({
             issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
