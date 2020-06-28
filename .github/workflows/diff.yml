@@ -45,7 +45,7 @@ jobs:
       with:
         script: |
           github.issues.createComment({
-            issue_number: 1,
+            issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: ${{ steps.create_checklist.outputs.create_checklist }}
