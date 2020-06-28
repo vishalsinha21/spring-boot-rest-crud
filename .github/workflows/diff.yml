@@ -12,6 +12,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
     steps:
     - uses: actions/checkout@v1
       with:
@@ -24,16 +28,20 @@ jobs:
         cat diff.txt
       id: get_diff
 
-
-    - name: create checklist
-      run: ./checklist.sh
-
-    - uses: actions/github-script@v2
+    uses: actions/setup-node@v1
       with:
-        script: |
-          github.issues.createComment({
-            issue_number: context.pull_request.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: '👋 Thanks for reporting!'
-          })
+        node-version: ${{ matrix.node-version }}
+      - run: node checklistUtil.js
+
+#    - name: create checklist
+#      run: ./checklist.sh
+
+#    - uses: actions/github-script@v2
+#      with:
+#        script: |
+#          github.issues.createComment({
+#            issue_number: context.pull_request.number,
+#            owner: context.repo.owner,
+#            repo: context.repo.repo,
+#            body: '👋 Thanks for reporting!'
+#          })

@@ -1,13 +1,11 @@
-function getFinalChecklist(diff) {
-  let checklist = getChecklist(diff);
+function getFinalChecklist(diff, mappings) {
+  let checklist = getChecklist(diff, mappings);
   let formattedChecklist = getFormattedChecklist(checklist);
   return formattedChecklist;
 }
 
 
-function getChecklist(diff) {
-  const data = require('./mapping.json');
-  const mappings = data.mappings
+function getChecklist(diff, mappings) {
   let checklist = []
 
   mappings.forEach(mapping => {
@@ -36,19 +34,25 @@ function getFormattedChecklist(checklist) {
   return formattedChecklist;
 }
 
-const mapping = require('./mapping.json');
-console.log(mapping)
+const data = require('./mapping.json');
+const mappings = data.mappings
+
 
 const fs = require('fs')
 var path = require('path');
-var filePath = path.join(__dirname, '..', '..', 'diff.txt');
+var filePath = path.join(__dirname, '.', 'diff.txt');
 
 fs.readFile(filePath, 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
-  let checklist = getFinalChecklist(data);
+  let checklist = getFinalChecklist(data, mappings);
   console.log(checklist)
+
+  fs.writeFile('checklist.md', checklist, function (err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+
 });
-
-
