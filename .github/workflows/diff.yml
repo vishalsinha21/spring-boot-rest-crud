@@ -44,6 +44,7 @@ jobs:
     - uses: actions/github-script@v2
       with:
         script: |
+          const fs = require('fs')
           const path = require('path')
           const filePath = path.resolve('./checklist.md')
           fs.readFile(filePath, 'utf8', function (err, data) {
