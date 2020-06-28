@@ -40,7 +40,7 @@ jobs:
       id: create_checklist
 
     - name: check output
-      run: echo ${{ steps.create_checklist.outputs.create_checklist }}
+      run: echo ```${{ steps.create_checklist.outputs.create_checklist }}```
 
     - uses: actions/github-script@v2
       with:
