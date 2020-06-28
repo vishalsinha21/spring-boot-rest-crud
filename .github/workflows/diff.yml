@@ -35,7 +35,7 @@ jobs:
       run: |
         node checklistUtil.js
         create_checklist="$(cat checklist.md)"
-        echo ::set-output name=create_checklist::"$create_checklist"
+        echo ::set-output name=create_checklist::$create_checklist
       id: create_checklist
 
     - name: check output
@@ -48,5 +48,8 @@ jobs:
             issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: ${{ steps.create_checklist.outputs.create_checklist }}
+            body: |
+            ```
+            ${{ steps.create_checklist.outputs.create_checklist }}
+            ```
           })
