@@ -20,13 +20,6 @@ jobs:
       run: git fetch origin master:master
     - name: get diff
       run: |
-        git_diff=$(git diff master | grep "^+")
-        echo $git_diff
-        git_diff="${git_diff//'%'/'%25'}"
-        git_diff="${git_diff//$'\n'/'%0A'}"
-        git_diff="${git_diff//$'\r'/'%0D'}"
-        echo "::set-output name=git_diff::$git_diff"
-      id: get_diff
-    - name: check output
-      run: echo ${{ steps.get_diff.outputs.git_diff }}
+        git diff master | grep "^+" >> diff.txt
+        cat diff.txt
 
