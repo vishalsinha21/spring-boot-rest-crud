@@ -45,9 +45,10 @@ jobs:
       with:
         script: |
           create_checklist="$(cat checklist.md)"
+          echo "$create_checklist"
           github.issues.createComment({
             issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: $create_checklist
+            body: ${{ create_checklist }}
           })
