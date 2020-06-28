@@ -35,7 +35,7 @@ jobs:
       run: |
         node checklistUtil.js
         create_checklist="$(cat checklist.md)"
-        echo ::set-output name=create_checklist::$create_checklist
+        echo ::set-output name=create_checklist::"$create_checklist"
       id: create_checklist
 
     - name: check output
