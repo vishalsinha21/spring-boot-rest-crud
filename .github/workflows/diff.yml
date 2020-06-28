@@ -35,7 +35,6 @@ jobs:
             return formattedChecklist;
           }
 
-
           function getChecklist(diff) {
             const data = require('./mapping.json');
             const mappings = data.mappings
@@ -66,9 +65,6 @@ jobs:
             }
             return formattedChecklist;
           }
-
-          const mapping = require('./mapping.json');
-          console.log(mapping)
 
           const fs = require('fs')
           var path = require('path');
