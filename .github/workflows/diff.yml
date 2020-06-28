@@ -22,7 +22,9 @@ jobs:
       run: |
         git diff master | grep "^+" >> diff.txt
         cat diff.txt
+        echo "::set-output name=git_diff::$git_diff"
       id: get_diff
+
 
     - name: setup node
       uses: actions/setup-node@v1
@@ -30,10 +32,14 @@ jobs:
         node-version: '12.x'
 
     - name: create checklist
-      run: node checklistUtil.js
+      run: |
+        node checklistUtil.js
+        $create_checklist=`cat checklist.md`
+        echo "::set-output name=create_checklist::$create_checklist"
+      id: create_checklist
 
-#    - name: create checklist
-#      run: ./checklist.sh
+    - name: check output
+      run: echo ${{ steps.create_checklist.outputs.create_checklist }}
 
 #    - uses: actions/github-script@v2
 #      with:
