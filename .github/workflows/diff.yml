@@ -44,12 +44,17 @@ jobs:
     - uses: actions/github-script@v2
       with:
         script: |
-          github.issues.createComment({
-            issue_number: context.payload.pull_request.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: |
-            ```
-            ${{ steps.create_checklist.outputs.create_checklist }}
-            ```
-          })
+          const path = require('path')
+          const filePath = path.resolve('./checklist.md')
+          fs.readFile(filePath, 'utf8', function (err, data) {
+            if (err) {
+              return console.log(err);
+            }
+            github.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: data
+            })
+          });
+
