@@ -9,5 +9,7 @@ public class Test {
         System.out.println(Integer.toHexString('-'));
         System.out.println(Integer.toHexString('['));
         System.out.println(Integer.toHexString(']'));
+        System.out.println(Integer.toHexString('*'));
+        System.out.println(Integer.toHexString(':'));
     }
 }
