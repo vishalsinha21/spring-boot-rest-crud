@@ -25,6 +25,7 @@ jobs:
         git diff master | grep "^+" >> diff.txt
         cat diff.txt
         diff_length=$(cat diff.txt | wc -m)
+        echo 'Diff length':$diff_length
         echo ::set-env name=diff_length::$diff_length
 
     - name: Setup node
