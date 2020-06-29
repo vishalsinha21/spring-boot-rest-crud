@@ -24,17 +24,23 @@ jobs:
       run: |
         git diff master | grep "^+" >> diff.txt
         cat diff.txt
+        diff_length=$(cat diff.txt | wc -m)
+        echo 'Diff length':$diff_length
+        echo ::set-env name=diff_length::$diff_length
 
     - name: Setup node
+      if: env.diff_length > 0
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
 
     - name: Create checklist
+      if: env.diff_length > 0
       run: |
         node checklistUtil.js
 
     - uses: actions/github-script@v2
+      if: env.diff_length > 0
       with:
         script: |
           const fs = require('fs')
