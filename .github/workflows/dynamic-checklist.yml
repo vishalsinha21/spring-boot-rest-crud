@@ -26,7 +26,6 @@ jobs:
         cat diff.txt
         diff_length=$(cat diff.txt | wc -m)
         echo ::set-env name=diff_length::$diff_length
-      id: get_diff
 
     - name: Setup node
       if: env.diff_length > 0
