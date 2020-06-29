@@ -1,11 +1,11 @@
 {
   "mappings": [
     {
-      "keywords": ["create index", "index"],
+      "keywords": ["create index", "createIndex"],
       "comment": "Indexes have been created concurrently in big tables"
     },
     {
-      "keywords": ["connection", "session"],
+      "keywords": ["connection", "session", "CloseableHttpClient", "HttpClient"],
       "comment": "Resources have been closed in finally block or using try-with-resources"
     },
     {
