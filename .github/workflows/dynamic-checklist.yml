@@ -37,7 +37,7 @@ jobs:
     - name: Create checklist
       if: env.diff_length > 0
       run: |
-        node checklistUtil.js
+        node dynamic_checklist/checklistUtil.js
 
     - uses: actions/github-script@v2
       if: env.diff_length > 0
