@@ -40,7 +40,7 @@ const mappings = data.mappings
 
 const fs = require('fs')
 var path = require('path');
-var filePath = path.join(__dirname, '.', 'diff.txt');
+var filePath = path.join(__dirname, '..', 'diff.txt');
 
 fs.readFile(filePath, 'utf8', function (err,data) {
   if (err) {
